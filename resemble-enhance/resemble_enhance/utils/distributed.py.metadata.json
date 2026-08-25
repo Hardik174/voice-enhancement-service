@@ -1,0 +1,4 @@
+{
+  "summary": "Patch resemble_enhance/utils/distributed.py to make deepspeed import optional",
+  "updatedAt": "2026-08-25T12:58:18.785932100Z"
+}

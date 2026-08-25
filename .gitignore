@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environments & Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+pyvenv.cfg
+
+# IDE / Editor configuration
+.vscode/
+.idea/
+*.swp
+*.swo
+*.suo
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Project outputs & cache
+*.log
+.cache/
+.pytest_cache/
+.ipynb_checkpoints/
+.mypy_cache/
+enhanced_output.wav

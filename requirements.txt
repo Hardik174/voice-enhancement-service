@@ -1,0 +1,11 @@
+fastapi>=0.100.0
+uvicorn>=0.20.0
+torch>=2.1.0
+torchaudio>=2.1.0
+soundfile>=0.12.0
+denoiser
+omegaconf
+scipy
+librosa
+# To install the patched resemble-enhance vocoder, run:
+# pip install -e ./resemble-enhance
