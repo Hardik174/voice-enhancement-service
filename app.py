@@ -58,7 +58,7 @@ class EnhanceRequest(BaseModel):
         description="Dry-mix ratio of noisy input in the denoised signal",
     )
     run_resemble: bool = Field(
-        True,
+        False,
         alias="resemble",
         description="Whether to run the resemble-enhance vocoder stage",
     )
@@ -187,6 +187,8 @@ async def enhance_endpoint(req: EnhanceRequest):
             )
             denoised = enhanced
         except Exception as e:
+            import traceback
+            traceback.print_exc()
             raise HTTPException(
                 status_code=500,
                 detail=f"Resemble-Enhance vocoder stage failed: {str(e)}",

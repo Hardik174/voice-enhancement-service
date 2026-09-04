@@ -21,7 +21,7 @@ def test_enhance(input_path: str, output_path: str, url: str):
     payload = {
         "audio_base64": audio_base64,
         "dry": 0.01,
-        "resemble": True,
+        "resemble": False,
         "nfe": 64,
         "solver": "midpoint",
         "lambd": 0.9,

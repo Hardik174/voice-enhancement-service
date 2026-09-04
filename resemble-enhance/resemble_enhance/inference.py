@@ -27,7 +27,7 @@ def inference_chunk(model, dwav, sr, device, npad=441):
     dwav = F.pad(dwav, (0, npad))
     hwav = model(dwav[None])[0].cpu()  # (T,)
     hwav = hwav[:length]  # Trim padding
-    hwav = hwav * abs_max  # Unnormalize
+    hwav = hwav * abs_max.cpu()  # Unnormalize
 
     return hwav
 

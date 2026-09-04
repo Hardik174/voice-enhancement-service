@@ -90,8 +90,26 @@ class HParams:
     @classmethod
     def from_yaml(cls, path: Path) -> "HParams":
         logger.info(f"Reading hparams from {path}")
-        # First merge to fix types (e.g., str -> Path)
-        return cls(**dict(OmegaConf.merge(cls(), OmegaConf.load(path))))
+        # Load config using OmegaConf (works on all versions)
+        config = OmegaConf.load(str(path))
+        
+        # Build dictionary from loaded config keys
+        config_dict = {}
+        for k in config.keys():
+            config_dict[k] = config[k]
+            
+        # Get default hparams from the dataclass
+        hparams_dict = asdict(cls())
+        
+        # Merge loaded config over defaults
+        merged = {**hparams_dict, **config_dict}
+        
+        # Coerce paths to pathlib.Path objects
+        for field_name in ["fg_dir", "bg_dir", "rir_dir"]:
+            if field_name in merged and merged[field_name] is not None:
+                merged[field_name] = Path(merged[field_name])
+                
+        return cls(**merged)
 
     def save_if_not_exists(self, run_dir: Path):
         path = run_dir / "hparams.yaml"
